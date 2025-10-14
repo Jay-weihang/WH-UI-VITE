@@ -1,13 +1,14 @@
 {
   "name": "wh-ui-vite",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "packageManager": "pnpm@10.15.1",
   "description": "",
   "author": "",
   "license": "ISC",
   "keywords": [],
   "main": "index.js",
+    "files": ["dist"],
   "scripts": {
     "test": "vitest",
     "dev": "vite",
@@ -64,5 +65,9 @@
     "cz-customizable": {
       "config": ".cz-config.cjs"
     }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
