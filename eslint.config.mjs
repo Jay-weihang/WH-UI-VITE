@@ -1,11 +1,12 @@
 // eslint.config.mjs
 import antfu from "@antfu/eslint-config";
 import { FlatCompat } from "@eslint/eslintrc";
-
+import pluginJs from "@eslint/js";
 const compat = new FlatCompat();
 
 export default antfu(
-  {
+  {  
+    ...pluginJs.configs.recommended,
     ignores: [],
   },
 
