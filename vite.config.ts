@@ -6,7 +6,7 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import { presetUno, presetAttributify, presetIcons } from "unocss";
 import UnoCSS from "unocss/vite";
 
-
+import { setupJSDOM } from 'jsdom-global';
 
 const rollupOptions = {
   external: ["vue", "vue-router"],
@@ -18,7 +18,9 @@ const rollupOptions = {
 };
 
 export default defineConfig({
-
+test: {
+    environment: 'jsdom',
+  },
 define: {
     __VUE_OPTIONS_API__: true,
     __VUE_PROD_DEVTOOLS__: false,
