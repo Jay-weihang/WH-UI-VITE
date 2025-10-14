@@ -1,6 +1,6 @@
 import type { ExtractPropTypes, PropType } from "vue";
 import { defineComponent } from "vue";
-import "virtual:uno.css";
+import 'virtual:uno.css';
 
 export type ButtonSize = "small" | "medium" | "large";
 export type ButtonColor =
