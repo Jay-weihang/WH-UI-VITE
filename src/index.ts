@@ -1,19 +1,17 @@
-const s: string = "hello TypeScript";
-console.log(s);
-
-
 // import { createApp } from "vue";
 // import SButton from './button'
 // import SButton from "./SFCButton.vue";
 
-
-
 // import TSXButton from "./TSXButton";
 // createApp(TSXButton).mount("#app");
 
+import { createApp } from 'vue/dist/vue.esm-browser.js'
+import SSYUI from './entry'
 
-import { createApp } from "vue/dist/vue.esm-browser.js";
-import SSYUI from "./entry";
+const message: string = 'hello TypeScript'
+// 避免使用 console.log（符合 ESLint 规则）
+// 如需调试可改为 console.warn
+console.warn(message)
 
 createApp({
   template: `
@@ -52,4 +50,4 @@ createApp({
   `,
 })
   .use(SSYUI)
-  .mount("#app");
+  .mount('#app')

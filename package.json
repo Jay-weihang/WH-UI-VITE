@@ -1,7 +1,12 @@
 {
   "name": "wh-ui-vite",
+  "type": "module",
   "version": "1.0.0",
+  "packageManager": "pnpm@10.15.1",
   "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
   "main": "index.js",
   "scripts": {
     "test": "vitest",
@@ -14,19 +19,8 @@
     "lint:fix": "eslint . --fix",
     "prepare": "husky"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.15.1",
-  "type": "module",
   "dependencies": {
     "vue": "^3.5.22"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test",
-      "pre-push": "npm test"
-    }
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",
@@ -37,6 +31,7 @@
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.37.0",
     "@iconify-json/ic": "^1.2.4",
+    "@types/jsdom": "^27.0.0",
     "@unocss/eslint-plugin": "^0.62.4",
     "@unocss/vite": "^66.5.3",
     "@vitejs/plugin-vue": "^6.0.1",
@@ -45,6 +40,7 @@
     "cz-customizable": "^7.5.1",
     "eslint": "^9.36.0",
     "eslint-plugin-format": "^0.1.2",
+    "eslint-plugin-vitest-globals": "^1.5.0",
     "happy-dom": "15.7.4",
     "husky": "^9.1.7",
     "jsdom": "^27.0.0",
@@ -54,6 +50,12 @@
     "vitepress": "^1.6.4",
     "vitepress-theme-demoblock": "3.0.7",
     "vitest": "2.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm test"
+    }
   },
   "config": {
     "commitizen": {

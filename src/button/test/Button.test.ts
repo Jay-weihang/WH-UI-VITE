@@ -1,142 +1,142 @@
-import Button from "../Button";
+import { shallowMount } from '@vue/test-utils'
 
-import { shallowMount } from "@vue/test-utils";
-import { describe, expect, test } from "vitest";
+import { describe, expect } from 'vitest'
+import Button from '../Button'
 // 测试分组
-describe("Button", () => {
+describe('button', () => {
   // mount
-  test("mount  @vue/test-utils", () => {
+  it('mount  @vue/test-utils', () => {
     // @vue/test-utils
     const wrapper = shallowMount(Button, {
       slots: {
-        default: "Button",
+        default: 'Button',
       },
-    });
+    })
 
     // 断言
-    expect(wrapper.text()).toBe("Button");
-  });
+    expect(wrapper.text()).toBe('Button')
+  })
 
-  describe("color", () => {
-    test("default", () => {
+  describe('color', () => {
+    it('default', () => {
       const wrapper = shallowMount(Button, {
         slots: {
-          default: "Button",
+          default: 'Button',
         },
-      });
+      })
       expect(
         wrapper
           .classes()
-          .map((v) => v.replace("\n", ""))
-          .includes("bg-blue-500")
-      ).toBe(true);
-    });
+          .map(v => v.replace('\n', ''))
+          .includes('bg-blue-500'),
+      ).toBe(true)
+    })
 
-    test("red", () => {
+    it('red', () => {
       const wrapper = shallowMount(Button, {
         slots: {
-          default: "Button",
+          default: 'Button',
         },
         props: {
-          color: "red",
+          color: 'red',
         },
-      });
+      })
 
       expect(
         wrapper
           .classes()
-          .map((v) => v.replace("\n", ""))
-          .includes("bg-red-500")
-      ).toBe(true);
-    });
-  });
+          .map(v => v.replace('\n', ''))
+          .includes('bg-red-500'),
+      ).toBe(true)
+    })
+  })
 
-  describe("round", () => {
-    test("default", () => {
+  describe('round', () => {
+    it('default', () => {
       const wrapper = shallowMount(Button, {
         slots: {
-          default: "Button",
+          default: 'Button',
         },
-      });
+      })
 
       expect(
         wrapper
           .classes()
-          .map((v) => v.replace("\n", ""))
-          .includes("rounded-lg")
-      ).toBe(true);
-    });
+          .map(v => v.replace('\n', ''))
+          .includes('rounded-lg'),
+      ).toBe(true)
+    })
 
-    test("round:true", () => {
+    it('round:true', () => {
       const wrapper = shallowMount(Button, {
         slots: {
-          default: "Button",
+          default: 'Button',
         },
         props: {
           round: true,
         },
-      });
+      })
 
       expect(
         wrapper
           .classes()
-          .map((v) => v.replace("\n", ""))
-          .includes("rounded-full")
-      ).toBe(true);
-    });
-  });
+          .map(v => v.replace('\n', ''))
+          .includes('rounded-full'),
+      ).toBe(true)
+    })
+  })
 
-  describe("plain", () => {
-    test("default", () => {
+  describe('plain', () => {
+    it('default', () => {
       const wrapper = shallowMount(Button, {
         slots: {
-          default: "Button",
+          default: 'Button',
         },
-      });
+      })
 
       expect(
         wrapper
           .classes()
-          .map((v) => v.replace("\n", ""))
-          .includes("bg-blue-500")
-      ).toBe(true);
-    });
+          .map(v => v.replace('\n', ''))
+          .includes('bg-blue-500'),
+      ).toBe(true)
+    })
 
-    test("plain:true", () => {
+    it('plain:true', () => {
       const wrapper = shallowMount(Button, {
         slots: {
-          default: "Button",
+          default: 'Button',
         },
         props: {
           plain: true,
         },
-      });
+      })
 
       expect(
         wrapper
           .classes()
-          .map((v) => v.replace("\n", ""))
-          .includes("bg-blue-100")
-      ).toBe(true);
-    });
-  });
+          .map(v => v.replace('\n', ''))
+          .includes('bg-blue-100'),
+      ).toBe(true)
+    })
+  })
 
-  test("icon", () => {
+  it('icon', () => {
     const wrapper = shallowMount(Button, {
       slots: {
-        default: "Button",
+        default: 'Button',
       },
       props: {
-        icon: "edit",
+        icon: 'edit',
       },
-    });
+    })
 
     expect(
       wrapper
-        .find("i")
+        .find('i')
         .classes()
-        .map((v) => v.replace("\n", ""))
-        .includes("i-ic-baseline-edit")
-    ).toBe(true);
-  });
-});
+        .map(v => v.replace('\n', ''))
+        .includes('i-ic-baseline-edit'),
+    ).toBe(true)
+  })
+})
