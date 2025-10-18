@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "vitepress/dist/client/theme-default": ["node_modules/vitepress/dist/client/theme-default"]
+    },
+    "types": ["vitest/globals", "jsdom"],
+    "strict": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": ["./**/*.*", "./shims-vue.d.ts"],
+  "exclude": ["node_modules", "**/.*/"],
+
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json" // 使用绝对路径确保正确读取
+  }
+
+}
