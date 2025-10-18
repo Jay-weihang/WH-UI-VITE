@@ -98,6 +98,9 @@ export default antfu(
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       // 可选：显式配置 style/indent 规则（与你的预期保持一致）
       'style/indent': ['error', 2],
+      'vue/object-property-newline': ['error', {
+        allowAllPropertiesOnSameLine: false, // 仅保留支持的属性
+      }],
     },
   },
 );
