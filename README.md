@@ -46,7 +46,7 @@ createApp(App)
 ```
 
 ##Quick Start
-如果希望尽快上手，可以访问[Getting Startedd](https://wh-ui-vite.vercel.app/)
+如果希望尽快上手，可以访问[wh-ui-vite.vercel.app](https://wh-ui-vite.vercel.app/)
 
 
 ## License
