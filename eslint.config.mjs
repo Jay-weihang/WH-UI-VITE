@@ -21,96 +21,83 @@
 //   // Other flat configs...
 // );
 
-// eslint.config.mjs（项目根目录）
-// eslint.config.mjs（项目根目录）
-import antfu from "@antfu/eslint-config";
-import { FlatCompat } from "@eslint/eslintrc";
-import pluginJs from "@eslint/js";
-// 仅导入插件（用于规则，不依赖其 environments）
-import vitestGlobals from "eslint-plugin-vitest-globals";
-import { fileURLToPath } from "url";
-import path from "path";
+import fs from 'node:fs'; // 新增：导入 fs 模块
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import antfu from '@antfu/eslint-config';
+import { FlatCompat } from '@eslint/eslintrc';
+import pluginJs from '@eslint/js';
+import vitestGlobals from 'eslint-plugin-vitest-globals';
 
-// 1. 生成绝对路径（解决 FlatCompat 路径问题）
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// 2. 正确初始化 FlatCompat（必传 recommendedConfig 和 baseDirectory）
 const compat = new FlatCompat({
   recommendedConfig: pluginJs.configs.recommended,
   baseDirectory: __dirname,
 });
 
-// 3. 手动定义 Vitest 常用全局变量（替代插件的 environments）
 const vitestGlobalVars = {
-  test: "readonly",
-  it: "readonly",
-  expect: "readonly",
-  describe: "readonly",
-  beforeAll: "readonly",
-  afterAll: "readonly",
-  beforeEach: "readonly",
-  afterEach: "readonly",
-  vi: "readonly",
-  vitest: "readonly",
+  test: 'readonly',
+  it: 'readonly',
+  expect: 'readonly',
+  describe: 'readonly',
+  beforeAll: 'readonly',
+  afterAll: 'readonly',
+  beforeEach: 'readonly',
+  afterEach: 'readonly',
+  vi: 'readonly',
+  vitest: 'readonly',
 };
 
+// 检查 tsconfig.json 是否存在
+const tsconfigPath = path.resolve(__dirname, './tsconfig.json');
+const hasTsconfig = fs.existsSync(tsconfigPath);
+if (!hasTsconfig) {
+  console.warn('⚠️  未找到 tsconfig.json，将禁用 TypeScript 项目级解析');
+}
+
 export default antfu(
-  {  
-    ignores: ["node_modules/**", "dist/**", "*.config.{js,mjs,ts}", "coverage/**"],
+  {
+    ignores: ['node_modules/**', 'dist/**', 'coverage/**'],
   },
 
-  // 4. 兼容传统规则
+  {
+    files: ['**/*.{js,cjs,mjs,ts,tsx,vue}'],
+  },
+
   ...compat.config({
-    extends: ["eslint:recommended"],
+    extends: ['eslint:recommended'],
   }),
 
-  // 5. 测试文件配置（关键：用手动定义的全局变量替代插件环境）
   {
-    files: ["**/*.test.{ts,tsx}"],
+    files: ['**/*.test.{ts,tsx}'],
     plugins: {
-      "vitest-globals": vitestGlobals, // 保留插件（用于其规则，非环境）
+      'vitest-globals': vitestGlobals,
     },
     languageOptions: {
-      globals: {
-        ...vitestGlobalVars, // 手动导入 Vitest 全局变量
-        window: "readonly",
-        document: "readonly",
-      },
+      globals: { ...vitestGlobalVars },
       parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module",
-        // 若没有 tsconfig.json，可删除 project 这一行
-        project: "./tsconfig.json",
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        project: hasTsconfig ? tsconfigPath : undefined, // 使用之前定义的变量
       },
     },
     rules: {
-      "no-undef": "off", // 彻底关闭未定义检查（避免遗漏变量）
-      "no-console": "off",
-      // 可选：启用 vitest-globals 插件的推荐规则
-      "vitest-globals/consistent-test-it": ["error", { fn: "test" }],
+      'no-undef': 'off',
+      'vitest/consistent-test-it': ['error', { fn: 'test' }],
     },
   },
 
-  // 6. 全局规则
   {
-    languageOptions: {
-      parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module",
-      },
-      globals: {
-        window: "readonly",
-        document: "readonly",
-        console: "readonly",
-      },
-    },
     rules: {
-      "no-console": ["error", { allow: ["warn", "error"] }],
-      "indent": ["error", 2],
-      "quotes": ["error", "single"],
-      "semi": ["error", "always"],
-      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+      'no-console': ['error', { allow: ['warn', 'error'] }],
+      // 删除这行："indent": ["error", 2],
+      'quotes': ['error', 'single'],
+      'style/semi': ['error', 'always'],
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      // 可选：显式配置 style/indent 规则（与你的预期保持一致）
+      'style/indent': ['error', 2],
     },
-  }
+  },
 );

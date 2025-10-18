@@ -1,5 +1,5 @@
-import type { DefaultTheme } from 'vitepress/theme'
-import { demoblockPlugin, demoblockVitePlugin } from 'vitepress-theme-demoblock'
+import type { DefaultTheme } from 'vitepress/theme';
+import { demoblockPlugin, demoblockVitePlugin } from 'vitepress-theme-demoblock';
 
 const sidebar: DefaultTheme.Sidebar = {
   '/': [
@@ -15,19 +15,19 @@ const sidebar: DefaultTheme.Sidebar = {
     { text: '数据展示' },
     { text: '布局' },
   ],
-}
+};
 const config = {
   themeConfig: {
     sidebar,
   },
   markdown: {
     config: (md: any) => {
-      md.use(demoblockPlugin)
+      md.use(demoblockPlugin);
     },
   },
   vite: {
     plugins: [demoblockVitePlugin()],
   },
 
-}
-export default config
+};
+export default config;

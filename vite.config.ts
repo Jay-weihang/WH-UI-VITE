@@ -1,10 +1,10 @@
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 
-import UnoCSS from 'unocss/vite'
+import UnoCSS from 'unocss/vite';
 
 /// <reference types="vitest/config" />
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 
 const rollupOptions = {
   external: ['vue', 'vue-router'],
@@ -13,7 +13,7 @@ const rollupOptions = {
       vue: 'Vue',
     },
   },
-}
+};
 
 export default defineConfig({
   test: {
@@ -41,4 +41,4 @@ export default defineConfig({
     },
   },
 
-})
+});

@@ -6,7 +6,7 @@ import {
   transformerAttributifyJsx,
   transformerDirectives,
   transformerVariantGroup,
-} from 'unocss'
+} from 'unocss';
 
 const colors = [
   'white',
@@ -19,7 +19,7 @@ const colors = [
   'indigo',
   'purple',
   'pink',
-]
+];
 const safelist = [
   ...colors.map(v => `bg-${v}-100`),
   ...colors.map(v => `bg-${v}-400`),
@@ -47,7 +47,7 @@ const safelist = [
     'add',
     'share',
   ].map(v => `i-ic-baseline-${v}`),
-]
+];
 
 export default defineConfig({
   safelist,
@@ -57,4 +57,4 @@ export default defineConfig({
     transformerAttributifyJsx(),
     transformerVariantGroup(),
   ],
-})
+});

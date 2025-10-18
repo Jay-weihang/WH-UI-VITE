@@ -1,8 +1,8 @@
-import type { ExtractPropTypes, PropType } from 'vue'
-import { defineComponent } from 'vue'
-import 'virtual:uno.css'
+import type { ExtractPropTypes, PropType } from 'vue';
+import { defineComponent } from 'vue';
+import 'virtual:uno.css';
 
-export type ButtonSize = 'small' | 'medium' | 'large'
+export type ButtonSize = 'small' | 'medium' | 'large';
 export type ButtonColor =
   | 'black'
   | 'gray'
@@ -12,7 +12,7 @@ export type ButtonColor =
   | 'blue'
   | 'indigo'
   | 'purple'
-  | 'pink'
+  | 'pink';
 
 export const buttonProps = {
   // 颜色
@@ -46,9 +46,9 @@ export const buttonProps = {
     type: String,
     default: '',
   },
-} as const
+} as const;
 
-export type ButtonProps = ExtractPropTypes<typeof buttonProps>
+export type ButtonProps = ExtractPropTypes<typeof buttonProps>;
 
 export default defineComponent({
   name: 'SButton',
@@ -70,7 +70,7 @@ export default defineComponent({
         y: '2',
         text: 'lg',
       },
-    }
+    };
 
     return () => (
       <button
@@ -93,13 +93,13 @@ export default defineComponent({
       >
         {props.icon !== ''
           ? (
-              <i class={`i-ic-baseline-${props.icon} p-3`}></i>
-            )
+            <i class={`i-ic-baseline-${props.icon} p-3`}></i>
+          )
           : (
-              ''
-            )}
+            ''
+          )}
         {slots.default ? slots.default() : ''}
       </button>
-    )
+    );
   },
-})
+});
